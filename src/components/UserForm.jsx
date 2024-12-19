@@ -27,11 +27,19 @@ export const UserForms = ({ handlerAddUser, initialUserForm, userSelected, handl
         //informacion del formulario
         if (!username || (!password && id === 0) || !email) {
             Swal.fire(
-                "Debe completar los campos del formularios!!",
+                "Error de validacion!!",
                 'Debe competar los campos del formulario',
                 'error'
             );
             return;
+        }
+        if(!email.includes('@')){
+            Swal.fire(
+                "Error de validadcion email",
+                'El emaild ebe ser valido',
+                'error'
+            );
+            return;   
         }
         //Guardar el user fomr en el listado de usuarios
         handlerAddUser(userForm);
@@ -80,10 +88,12 @@ export const UserForms = ({ handlerAddUser, initialUserForm, userSelected, handl
                 }
             </button>
 
-            <button className="btn btn-primary mx-2"
-            type="button"
-            onClick={()=>onCloseForm()}
-            >Cerrar</button>
+            {!handlerCloseForm || <button className="btn btn-primary mx-2"
+                type="button"
+                onClick={() => onCloseForm()}
+            >Cerrar
+            </button>}
+
         </form>
     )
 
