@@ -9,21 +9,21 @@ const initialForms = {
 export const LoginPage = ({ handlerLogin }) => {
 
     const [loginForm, setLoginForm] = useState(initialForms);
-    const {username, password} = loginForm;
+    const { username, password } = loginForm;
 
-    const onInputChage =({target}) =>{
-        const {name, value} = target;
+    const onInputChage = ({ target }) => {
+        const { name, value } = target;
         setLoginForm({
             ...loginForm,
             [name]: value
         })
     }
-    const onSubmit = (event) =>{
+    const onSubmit = (event) => {
         event.preventDefault();
-        if(!username || !password){
+        if (!username || !password) {
             Swal.fire('Error de validacion', ' Usuario y contraseña requeridos');
         }
-        handlerLogin({username,password}); 
+        handlerLogin({ username, password });
 
         setLoginForm(initialForms);
     }
@@ -69,9 +69,16 @@ export const LoginPage = ({ handlerLogin }) => {
                         </div>
 
 
+
                     </form>
+                    <label>Usuario: asdf</label>
+                    <label>Constraseña: asdf</label>
+
+
                 </div>
             </div>
+
         </div>
+
     );
 }

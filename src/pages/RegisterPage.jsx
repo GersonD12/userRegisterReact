@@ -2,8 +2,11 @@ import { useEffect, useState } from "react"
 import { UserForms } from "../components/UserForm"
 import { useParams } from "react-router-dom";
 export const RegisterPage = ({ users = [], handlerAddUser, initialUserForm }) => {
+
     const [userSelected, setUserSeleted] = useState(initialUserForm);
+
     const { id } = useParams();
+    
     useEffect(() => {
         if (id) {
             const user = users.find(u => u.id == id) || initialUserForm;
